@@ -1,16 +1,23 @@
 
-const formElement = document.querySelector( '.login-form' )
+const formElement = document.querySelector( '.login-form' );
+formElement.addEventListener( 'submit', onBtnSubmit );
 
-formElement.addEventListener( 'submit', onBtnSubmit )
 function onBtnSubmit ( event ) {
     event.preventDefault();
+    const email = event.currentTarget.elements.email.value;
+    const password = event.currentTarget.elements.password.value;
 
-    const objForm = {};
+    if (email === '' || password === '') {
+        return alert ('Все поля должны быть заполнены!')
+    } 
+
     const formData = new FormData( event.currentTarget )
+    const dataFormValue = {};
+
     formData.forEach( ( value, name ) => {
-        objForm[name] = value 
+        dataFormValue[name] = value;
     })
-    console.log( objForm )
-    event.currentTarget.reset()
+    console.log( dataFormValue );
+    formElement.reset();
 }
 

@@ -7,9 +7,17 @@ const refs = {
     nameLabel: document.querySelector('#name-output'),
 };
 
+function onInputChange(event) {
+    if (event.currentTarget.value.trim() === '') {
+        refs.nameLabel.textContent = "Anonymous";
+    } else {
+        refs.nameLabel.textContent = event.currentTarget.value.trim();
+    }   
+};
+
 refs.input.addEventListener('input', onInputChange);
 
-function onInputChange(event) {
-    //console.log(event.currentTarget.value);
-    refs.nameLabel.textContent = event.currentTarget.value;
-}
+
+
+
+
